@@ -135,7 +135,8 @@ Uncomment the code below and run it to install your API key on your computer. Ag
 
 ```{r}
 
-census_api_key("d0f1c94dadbeb7b2428ea94375fe77ec92f5411f", install=TRUE)
+#census_api_key("d0f1c94dadbeb7b2428ea94375fe77ec92f5411f", install=TRUE)
+
 
 
 ```
