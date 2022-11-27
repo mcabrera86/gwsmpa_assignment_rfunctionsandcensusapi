@@ -87,11 +87,13 @@ head(flights)
 
 ```{r}
 
-
+filter_airport <- function(airport){
+  result <- filter(flights, origin == airport)
+  return(result)
 }
 
-
-
+#example
+filter_airport("EWR")
 
 
 ```
@@ -104,10 +106,16 @@ head(flights)
 
 ```{r}
 
+filter_airport <- function(airport){
+  flight_data_set <- filter(flights, origin == airport)
+  result <- flight_data_set %>% 
+    group_by(carrier) %>% 
+    summarise(count=n())
+  return(result)
+}
 
-
-
-
+#example
+filter_airport("LGA")
 
 ```
 
@@ -127,7 +135,7 @@ Uncomment the code below and run it to install your API key on your computer. Ag
 
 ```{r}
 
-# census_api_key("PUTYOURAPIKEYHERE", install=TRUE)
+census_api_key("d0f1c94dadbeb7b2428ea94375fe77ec92f5411f", install=TRUE)
 
 
 ```
@@ -144,8 +152,10 @@ Now, using the `get_acs()` function in tidycensus, pull down the state-level dat
 
 ```{r}
 
-
-
+get_acs(geography = "state",
+        variables = myvars,
+        output = "wide",
+        geometry = TRUE)
 
 
 ```
