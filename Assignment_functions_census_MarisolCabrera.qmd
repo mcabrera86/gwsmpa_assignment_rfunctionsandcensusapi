@@ -164,9 +164,15 @@ To make things a little cleaner, use the `select()` function to remove the three
 
 ```{r}
 
+allstates_wide <- get_acs(geography = "state",
+        variables = myvars,
+        output = "wide",
+        geometry = TRUE)
 
+clean_allstates_wide <- allstates_wide %>%
+  select(-ends_with("M"))
 
-
+clean_allstates_wide
 
 ```
 
@@ -174,9 +180,13 @@ Now, using the `mutate()` function, create a new column that contains the percen
 
 ```{r}
 
+new_clean_allstates_wide <- clean_allstates_wide %>% 
+  mutate(bach_or_higher = education_bachelorsE + education_gradprofessE)
 
+pctdata_new_clean_allstates_wide <- new_clean_allstates_wide %>% 
+  mutate(pct_ed_bach_or_higher = (bach_or_higher / education_totalE) *100)
 
-
+pctdata_new_clean_allstates_wide
 
 ```
 
@@ -186,9 +196,10 @@ First, filter your data to remove Alaska, Hawaii and Puerto Rico.
 
 ```{r}
 
+NEW_pctdata_new_clean_allstates_wide <- pctdata_new_clean_allstates_wide %>% 
+  filter(NAME != "Alaska", NAME !="Hawaii", NAME !="Puerto Rico")
 
-
-
+NEW_pctdata_new_clean_allstates_wide
 
 ```
 
@@ -197,8 +208,10 @@ Now, using the tmap() package, create a shaded map for the continental U.S. that
 ```{r}
 
 
+tmap_mode(mode = "plot")
 
-
+tm_shape(NEW_pctdata_new_clean_allstates_wide) +
+  tm_polygons("pct_ed_bach_or_higher", id = "GEOID")
 
 
 
