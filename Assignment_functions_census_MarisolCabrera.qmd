@@ -32,11 +32,10 @@ options(tigris_class = "sf")
 
 sumnum <- function(x, y) {
   result <- x+y
-
     return(result)
   } 
 
-
+#example
 sumnum(2,3)
 
 ```
@@ -45,9 +44,15 @@ sumnum(2,3)
 
 ```{r}
 
+mean_vector <- c(1,2,3)
 
+mean_function <- function(mean_vector){
+  return(mean(mean_vector))
+  return(result)
+}
 
-
+#using example numbers
+mean_function(mean_vector)
 
 
 ```
@@ -57,9 +62,15 @@ sumnum(2,3)
 
 ```{r}
 
+mean_vector <- c(1,2,3)
 
+mean_function_print <- function(mean_vector){
+  return(paste0("The mean is ", mean(mean_vector)))
+  return(result)
+}
 
-
+#using example numbers
+mean_function_print(mean_vector)
 
 ```
 
