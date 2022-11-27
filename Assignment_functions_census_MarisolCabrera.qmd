@@ -1,6 +1,6 @@
 ---
 title: "R Assignment - Initial Functions and APIs"
-author: "Your Name Here"
+author: "Marisol Cabrera"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:
@@ -30,9 +30,14 @@ options(tigris_class = "sf")
 
 ```{r}
 
+sumnum <- function(x, y) {
+  result <- x+y
+
+    return(result)
+  } 
 
 
-
+sumnum(2,3)
 
 ```
 
