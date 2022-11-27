@@ -47,7 +47,7 @@ sumnum(2,3)
 mean_vector <- c(1,2,3)
 
 mean_function <- function(mean_vector){
-  return(mean(mean_vector))
+  result <- mean(mean_vector)
   return(result)
 }
 
@@ -65,7 +65,7 @@ mean_function(mean_vector)
 mean_vector <- c(1,2,3)
 
 mean_function_print <- function(mean_vector){
-  return(paste0("The mean is ", mean(mean_vector)))
+  result <- paste0("The mean is ", mean(mean_vector))
   return(result)
 }
 
@@ -88,6 +88,7 @@ head(flights)
 ```{r}
 
 
+}
 
 
 
